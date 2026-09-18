@@ -24,6 +24,30 @@ function setText(selector, value) {
   }
 }
 
+
+function fitTextToContainer(element, maxSize, minSize = 28) {
+  if (!element || !element.parentElement) return;
+
+  const parentWidth = element.parentElement.clientWidth;
+  const availableWidth = Math.max(180, parentWidth - 24);
+  let size = maxSize;
+
+  element.style.fontSize = size + "px";
+
+  while (element.scrollWidth > availableWidth && size > minSize) {
+    size -= 1;
+    element.style.fontSize = size + "px";
+  }
+}
+
+function fitNameTitles() {
+  const loaderTitle = $("#loader-title");
+  const heroName = $("#guest-name");
+
+  fitTextToContainer(loaderTitle, 58, 28);
+  fitTextToContainer(heroName, 64, 30);
+}
+
 function populateInvitation() {
   document.title = `Invitación de ${invitation.name || "cumpleaños"}`;
 
@@ -264,6 +288,14 @@ function init() {
   startCountdown();
   setupRevealAnimations();
   setupVisibilityAudio();
+
+  const runTextFit = () => fitNameTitles();
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(runTextFit);
+  } else {
+    window.setTimeout(runTextFit, 150);
+  }
+  window.addEventListener("resize", runTextFit);
 
   enterButton?.addEventListener("click", enterInvitation);
   musicToggle?.addEventListener("click", toggleAudio);
