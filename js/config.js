@@ -10,7 +10,7 @@ window.INVITATION_CONFIG = {
     venue: "Salón de Fiestas Cirilo",
     address: "Álvarez Thomas 1320",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+de+Fiestas+Cirilo+%C3%81lvarez+Thomas+1320+Buenos+Aires",
-    whatsappNumber: "5491156223007",
+    whatsappNumber: "",
     whatsappMessage: "¡Hola! Confirmo mi asistencia al cumpleaños de Mariano. 🕷🕸",
     instagramUrl: "https://www.instagram.com/rossdigitalstudio/",
     instagramHandle: "@rossdigitalstudio",
